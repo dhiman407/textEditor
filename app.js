@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes');
 var users = require('./routes/user');
+var editor = require('./routes/editorServer');
 
 var app = express();
 
@@ -25,6 +26,8 @@ app.use(app.router);
 
 app.get('/', routes.index);
 app.get('/users', users.list);
+app.get('/editor', editor.editorServer);
+app.get('/editor/:uniqueId', editor.editorServer);
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
