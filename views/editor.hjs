@@ -1,6 +1,7 @@
 <!DOCTYPE html><html>
  <head>
   <script src="/javascript/texteditor.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
   <title>{{title}}</title>
  </head>
  <body style="height:1024px">

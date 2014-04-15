@@ -1,4 +1,5 @@
 var express = require('express');
+var sio = require('socket.io');
 var http = require('http');
 var path = require('path');
 var favicon = require('static-favicon');
@@ -11,8 +12,13 @@ var users = require('./routes/user');
 var editor = require('./routes/editorServer');
 
 var app = express();
+var server = http.createServer(app);
+server.listen(3001);
+var io = sio.listen(server);
 
 // view engine setup
+
+app.locals.io = io;
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hjs');
 
