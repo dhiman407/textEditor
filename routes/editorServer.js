@@ -1,12 +1,12 @@
 exports.editorServer  = function (req, res) {
-//	'use strict';
+	'use strict';
 	var io = req.app.locals.io;
 	//TODO: create alphanumeric Id
 	var generateId = function(){
 		return Math.floor(Math.random() * 100000);
 	};
 	
-	var id=0;
+	
 	var uniqueId = req.params.uniqueId;
 	if(uniqueId){
 		var socket = io.of('/'+uniqueId);
@@ -20,7 +20,7 @@ exports.editorServer  = function (req, res) {
 		var title = 'Session - ' + uniqueId;
 		res.render('editor', { 'title': title, 'socketId' : uniqueId});
 	}else{
-		id = generateId();
+		var id = generateId();
 		var socket = io.of('/'+id);
 		socket.on('connection', function (socket) {
 			console.log(socket);
